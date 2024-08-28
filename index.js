@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-
+const WEB_SERVER =express();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const FILES_DIR = path.join(__dirname, 'files');
@@ -36,6 +36,7 @@ app.get('/list-files', (req, res) => {
         }
         const textFiles = files.filter(file => file.endsWith('.txt'));
         res.status(200).json({ files: textFiles });
+        res.render("list-files");
     });
 });
 
